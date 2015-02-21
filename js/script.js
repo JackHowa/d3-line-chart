@@ -2,7 +2,7 @@ var margin = {top: 20, right: 20, bottom: 20, left: 20},
     width = $(".chart").width() - margin.left - margin.right,
     height = $(".chart").height() - margin.top - margin.bottom;
 
-var parseDate = d3.json("date").parse;
+var parseDate = d3.time.format("%d-%b-%y").parse;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -31,7 +31,7 @@ var svg = d3.select("chart").append("svg")
 d3.json("js/data.json", function(error, data) {
   data.forEach(function(d) {
 
-    d.date = parseDate(d.date);
+    d.date = parseDate("date");
     d.unemployment = +d.unemployment;
   });
 
