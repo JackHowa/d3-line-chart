@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 20, bottom: 20, left: 20},
+var margin = {top: 20, right: 20, bottom: 20, left: 60},
     width = $(".chart").width() - margin.left - margin.right,
     height = $(".chart").height() - margin.top - margin.bottom;
 
