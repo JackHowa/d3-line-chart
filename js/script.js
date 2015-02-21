@@ -1,6 +1,6 @@
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 20, left: 20},
+    width = $(".chart").width() - margin.left - margin.right,
+    height = $(".chart").height() - margin.top - margin.bottom;
 
 var parseDate = d3.json("date").parse;
 
@@ -22,7 +22,7 @@ var line = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.unemployment); });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -30,6 +30,7 @@ var svg = d3.select("body").append("svg")
 
 d3.json("js/data.json", function(error, data) {
   data.forEach(function(d) {
+
     d.date = parseDate(d.date);
     d.unemployment = +d.unemployment;
   });
