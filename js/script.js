@@ -20,9 +20,9 @@ var yAxis = d3.svg.axis()
 
 var line = d3.svg.line()
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.unemployment); });
+    .y(function(d) { return y(d.labor_force); });
 
-var svg = d3.select("chart").append("svg")
+var svg = d3.select(".chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -31,11 +31,11 @@ var svg = d3.select("chart").append("svg")
 d3.json("js/data.json", function(error, data) {
   data.forEach(function(d) {
     d.date = parseDate(d.date);
-    d.unemployment = +d.unemployment;
+    d.labor_force = +d.labor_force;
   });
 
   x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain(d3.extent(data, function(d) { return d.unemployment; }));
+  y.domain(d3.extent(data, function(d) { return d.labor_force; }));
 
   svg.append("g")
       .attr("class", "x axis")
@@ -57,8 +57,3 @@ d3.json("js/data.json", function(error, data) {
       .attr("class", "line")
       .attr("d", line);
 });
-
-
-
-
-
