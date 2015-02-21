@@ -30,8 +30,7 @@ var svg = d3.select("chart").append("svg")
 
 d3.json("js/data.json", function(error, data) {
   data.forEach(function(d) {
-
-    d.date = parseDate("date");
+    d.date = parseDate(d.date);
     d.unemployment = +d.unemployment;
   });
 
